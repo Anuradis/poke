@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "poke"
+    }
+  },
+  "defaultProject": "poke",
+  "cli": {
+    "analytics": "e84f4ed1-f468-428f-87ad-f1b4653f9a84"
+  }
 }
