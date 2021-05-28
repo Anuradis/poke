@@ -1,0 +1,28 @@
+.container {
+  padding: 20px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .col-card {
+    width: 10%;
+    padding: 20px;
+    min-width: 300px;
+
+    .mat-card {
+      min-width: 100px;
+      max-height: 60%;
+    }
+  }
+
+  .col-details {
+    width: 10%;
+    padding: 20px;
+    min-width: 300px;
+  }
+}
+
+
+

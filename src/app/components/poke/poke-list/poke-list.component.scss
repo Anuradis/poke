@@ -1,0 +1,29 @@
+.table-container {
+  padding: 20px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .table-col {
+    padding: 20px;
+    min-width: 300px;
+    flex-basis: 50%;
+
+    table {
+      width: 100%;
+      max-height: 500px;
+      overflow-x: scroll;
+    }
+  }
+
+  .mat-form-field {
+    margin: auto;
+    display: block;
+    font-size: 14px;
+  }
+}
+
+
+
