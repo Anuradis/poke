@@ -1,3 +1,31 @@
-<ng-container *ngFor="let pokemon of pokemons">
-  <div>{{pokemon.name}}</div>
-</ng-container>
+
+  <table mat-table [dataSource]="pokemons">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>{{'Name'}}</th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Url Column -->
+    <ng-container matColumnDef="url">
+      <th mat-header-cell *matHeaderCellDef>{{'Url'}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> {{'Actions'}}</th>
+      <td mat-cell *matCellDef="let element" class="action-link">
+        <button mat-icon-button color="primary"
+                (click)="viewPokemonDetails(element.name)"
+                matTooltip="{{'perview' }}">
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
