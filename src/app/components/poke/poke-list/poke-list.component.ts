@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {PokemontAPI} from 'src/app/interfaces/pokemonAPI';
+import {PokemonAPI} from 'src/app/interfaces/pokemonAPI';
 import {PokemonList} from 'src/app/interfaces/pokemonList';
 import {PokemonService} from 'src/app/services/pokemon.service';
 import {MatTableDataSource} from '@angular/material/table';
@@ -20,9 +20,6 @@ export class PokeListComponent implements OnInit {
   @ViewChild(MatSort, {static: false}) public sort: MatSort = Object.create(null);
 
 
-
-
-
   constructor(private pokemonService: PokemonService, private router: Router) {
   }
 
@@ -30,24 +27,31 @@ export class PokeListComponent implements OnInit {
     this.getPokemons();
   }
 
+  /**
+   * Passes pokemon name as param and navigates to pokemon detail component
+   */
   viewPokemonDetails(name: string): void {
     this.router.navigateByUrl('/').then(() => {
       this.router.navigate(['pokemon/details/' + name]).then();
     });
   }
 
-
+  /**
+   * Returns pokemon list fetched from PokeAPI
+   */
   getPokemons(): void {
-    this.pokemonService.getPokemonList().subscribe((data: PokemontAPI) => {
+    this.pokemonService.getPokemonList().subscribe((data: PokemonAPI) => {
       this.pokemonsResult = data.results;
       this.pokemons = new MatTableDataSource<PokemonList>(this.pokemonsResult);
       this.pokemons.sort = this.sort;
       this.pokemons.paginator = this.paginator;
-      console.log(data.results, 'data results');
     });
   }
 
-    applyFilter(FiltredValue: string) {
-      this.pokemons.filter = FiltredValue.trim().toLocaleLowerCase();
-    }
+  /**
+   * Filters fetched pokemon list on passed FilteredValue param
+   */
+  applyFilter(FiltredValue: string) {
+    this.pokemons.filter = FiltredValue.trim().toLocaleLowerCase();
+  }
 }

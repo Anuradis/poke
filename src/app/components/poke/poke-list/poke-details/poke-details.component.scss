@@ -10,6 +10,11 @@
     width: 10%;
     padding: 20px;
     min-width: 300px;
+
+    .mat-card {
+      min-width: 100px;
+      max-height: 60%;
+    }
   }
 
   .col-details {
@@ -20,8 +25,4 @@
 }
 
 
-.mat-card {
-  min-width: 100px;
-  max-height: 60%;
-}
 

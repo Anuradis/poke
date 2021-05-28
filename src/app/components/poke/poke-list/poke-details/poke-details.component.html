@@ -1,13 +1,12 @@
-<!--<mat-spinner *ngIf="showSpinner"></mat-spinner>-->
 <div class="container">
   <div class="col-card">
     <mat-card>
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{pokemonDetails?.name}}</mat-card-title>
-        <mat-card-subtitle>{{pokemonDetails?.types[0].type.name}}</mat-card-subtitle>
+        <mat-card-subtitle>{{pokemonDetails?.types[0]?.type.name}}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="{{pokemonDetails?.sprites.front_default}}" alt="Photo of a {{pokemonDetails?.name}}">
+      <img mat-card-image src="{{pokemonDetails?.sprites?.front_default}}" alt="Photo of a {{pokemonDetails?.name}}">
       <mat-card-content>
 
         <ul>
@@ -21,11 +20,11 @@
     <h3 class="md-body-2
 ">base_happiness: <span>{{pokemonSpecies?.base_happiness}}</span></h3>
     <h3>capture_rate: <span>{{pokemonSpecies?.capture_rate}}</span></h3>
-    <h3>color: <span>{{pokemonSpecies?.color.name}}</span></h3>
-    <h3>evolves_from_species: <span>{{pokemonSpecies?.evolves_from_species.name}}</span></h3>
-    <h3>generation: <span>{{pokemonSpecies?.generation.name}}</span></h3>
-    <h3>growth_rate: <span>{{pokemonSpecies?.growth_rate.name}}</span></h3>
-    <h3>habitat: <span>{{pokemonSpecies?.habitat.name}}</span></h3>
+    <h3>color: <span>{{pokemonSpecies?.color?.name}}</span></h3>
+    <h3>evolves_from_species: <span>{{pokemonSpecies?.evolves_from_species?.name}}</span></h3>
+    <h3>generation: <span>{{pokemonSpecies?.generation?.name}}</span></h3>
+    <h3>growth_rate: <span>{{pokemonSpecies?.growth_rate?.name}}</span></h3>
+    <h3>habitat: <span>{{pokemonSpecies?.habitat?.name}}</span></h3>
     <button mat-raised-button color="accent"
             routerLink="/dashboard"
             matTooltip="{{'previous' }}">
