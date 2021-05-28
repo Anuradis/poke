@@ -19,7 +19,7 @@ export class PokemonService {
    * Returns pokemon list
    */
   getPokemonList(): Observable <any> {
-    return this.http.get(this.baseUrl).pipe(catchError(this.handleError));
+    return this.http.get(`${this.baseUrl}?limit=500`).pipe(catchError(this.handleError));
 
  }
 

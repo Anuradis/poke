@@ -1,31 +1,40 @@
+<div class="table-container">
+  <div class="table-col">
 
-  <table mat-table [dataSource]="pokemons">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter pokemons">
+    </mat-form-field>
+    <table mat-table matSort [dataSource]="pokemons">
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>{{'Name'}}</th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'Name'}}</th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
 
-    <!-- Url Column -->
-    <ng-container matColumnDef="url">
-      <th mat-header-cell *matHeaderCellDef>{{'Url'}} </th>
-      <td mat-cell *matCellDef="let element"> {{element.url}} </td>
-    </ng-container>
+      <!-- Url Column -->
+      <ng-container  matColumnDef="url">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'Url'}} </th>
+        <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef> {{'Actions'}}</th>
-      <td mat-cell *matCellDef="let element" class="action-link">
-        <button mat-icon-button color="primary"
-                (click)="viewPokemonDetails(element.name)"
-                matTooltip="{{'perview' }}">
-          <mat-icon>visibility</mat-icon>
-        </button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> {{'Actions'}}</th>
+        <td mat-cell *matCellDef="let element" class="action-link">
+          <button mat-icon-button color="primary"
+                  (click)="viewPokemonDetails(element.name)"
+                  matTooltip="{{'Perview' }}">
+            <mat-icon>visibility</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div class="no-record" *ngIf="this.pokemons.filteredData.length < 1">No records found</div>
+    <mat-paginator [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons></mat-paginator>
+  </div>
+</div>
